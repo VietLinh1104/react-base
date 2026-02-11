@@ -25,6 +25,15 @@ axiosInstance.interceptors.request.use(
 // Add a response interceptor
 axiosInstance.interceptors.response.use(
     (response) => {
+        if (response.data && response.data.status) {
+            if (response.data.status === 200) {
+                return response.data.data;
+            }
+            if (response.data.status === 500) {
+                console.error(response.data.message);
+                return Promise.reject(response.data);
+            }
+        }
         return response;
     },
     (error) => {
