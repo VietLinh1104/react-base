@@ -1,4 +1,3 @@
-//tsconfig.app.json
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
@@ -42,6 +41,9 @@
       ],
       "@utils/*": [
         "src/utils/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
       ]
     },
     /* Bundler mode */
