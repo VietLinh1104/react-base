@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "gen:api": "npx openapi-generator-cli generate -i $VITE_API_URL/v3/api-docs -g typescript-axios -o src/api/generated",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "axios": "^1.13.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0",
