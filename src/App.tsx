@@ -1,41 +1,25 @@
-import { useEffect, useState } from 'react';
-import { ddlApi } from '@/api';
-
-import type { DDLResponse  } from "@/api/generated/api";
+// src/App.tsx
+import { Routes, Route } from "react-router-dom";
+import DashboardLayout from "@components/layout/dashboard/DashboardLayout";
+import HomePage from "@pages/dashboard/HomePage";
+import AuthLayout from "./components/layout/dashboard/AuthLayout";
+import AuthPage from "./pages/dashboard/AuthPage";
+import { ThemeProvider } from "@components/provider/ThemeProvider";
 
 function App() {
-  const [ddlData, setDdlData] = useState<DDLResponse | null>(null);
-
-  const fetchDDL = async () => {
-      try {
-        const response:any = await ddlApi.getDDLTransactionDetail();
-        if (response) {
-          console.log('DDL Response:', response);
-          setDdlData(response);
-        } else {
-          console.log('DDL Response:', response);
-        }
-      } catch (error) {
-        console.error('Error fetching DDL:', error);
-      }
-    };
-
-
-  useEffect(() => {
-    fetchDDL();
-  }, []);
-
   return (
-    <>
-      <p className="text-5xl text-amber-800">
-        {ddlData && ddlData.costCenterDDL && ddlData.costCenterDDL.length > 0 ? <>
-          { ddlData.costCenterDDL.map((item:any) => (
-            <p key={item.id}>{item.name}</p>
-          ))}
-        </>: 'No DDL Data'}
-      </p>
-    </>
-  )
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <Routes>
+      <Route path="/" element={<DashboardLayout />}>
+        <Route index element={<HomePage />} /> 
+      </Route>
+
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route index element={<AuthPage />} />
+      </Route>
+    </Routes>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
