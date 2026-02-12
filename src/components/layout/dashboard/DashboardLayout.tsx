@@ -2,7 +2,8 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { AppSidebar } from "@components/common/AppSidebar";
+import { AppSidebar } from "@/components/sections/AppSidebar";
+import { NavbarApp } from "@/components/sections/NavbarApp";
 
 // Khai báo Interface để code sạch và dễ mở rộng
 interface DashboardLayoutProps {
@@ -15,10 +16,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ title }) => {
       {/* sidebar */}
       <SidebarProvider>
         <AppSidebar />
-        <main>
-          <SidebarTrigger />
-          <Outlet />
-        </main>
+        <div className="w-full flex flex-col">
+          <NavbarApp>
+            <SidebarTrigger />
+            <h1 className="text-sm font-semibold">{title}</h1>
+          </NavbarApp>
+          <main className="flex-1 w-full p-4">
+            <Outlet />
+          </main>
+        </div>
       </SidebarProvider>
     </div>
   );
