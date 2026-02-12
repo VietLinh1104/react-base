@@ -41,8 +41,8 @@ export function AppSidebar() {
                 ))}
             </SidebarContent>
             <SidebarFooter>
-                <div className="flex items-center gap-2 hover:bg-sidebar-accent rounded-md cursor-pointer px-3 py-3 h-full w-full">
-                    <div className="flex border justify-center items-center border-sidebar-border rounded-md w-8 h-8">
+                <div className="flex items-center gap-2 hover:bg-sidebar-accent rounded-sm cursor-pointer px-3 py-3 h-full w-full">
+                    <div className="flex border justify-center items-center border-sidebar-border rounded-full w-7 h-7">
                         <User className="w-4 h-4" />
                     </div>
                     <div className="flex flex-col">

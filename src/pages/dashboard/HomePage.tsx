@@ -1,21 +1,27 @@
 // @pages/dashboard/HomePage.tsx
 import { ButtonSpin } from "@components/common/ButtonSpin";
+import { useToastApp } from "@hooks/use-toast-app";
 import { useState } from "react";
-interface HomePageProps {
-  userRole?: string;
-}
 
-const HomePage: React.FC<HomePageProps> = ({ userRole }) => {
+const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { success, error, info, warning } = useToastApp();
+
+  const handleGenerate = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      success("Document generated successfully!");
+    }, 0);
+  };
 
   return (
     <>
-      <h1>Chào mừng {userRole || "khách"}!</h1>
       <ButtonSpin
         variant="secondary"
         isLoading={isLoading}
         loadingText="Generating..."
-        onClick={() => setIsLoading(true)}
+        onClick={handleGenerate}
         className="mt-4"
       >
         Generate DOC
