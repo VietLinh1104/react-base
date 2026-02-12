@@ -1,8 +1,8 @@
 import { Moon, Sun, Search } from "lucide-react";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@components/ui/input-group";
 import { Button } from "@components/ui/button";
 import { useTheme } from "@hooks/use-theme";
 import { Separator } from "@components/ui/separator";
+import { InputSpin } from "@components/common/InputSpin";
 
 export function NavbarApp({ children }: { children: React.ReactNode }) {
     const { theme, setTheme } = useTheme();
@@ -24,13 +24,14 @@ export function NavbarApp({ children }: { children: React.ReactNode }) {
                     {theme === "dark" ? <Sun /> : <Moon />}
                 </Button>
                 <Separator orientation="vertical" className="h-full" />
-                <InputGroup className="max-w-xs h-7" >
-                    <InputGroupInput placeholder="Search..." />
-                    <InputGroupAddon>
-                        <Search />
-                    </InputGroupAddon>
-                    <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
-                </InputGroup>
+                <InputSpin
+                    isLoading={true}
+                    icon={<Search />}
+                    loadingText="Searching..."
+                    placeholder="Search..."
+                >
+                    12 results
+                </InputSpin>
 
             </div>
         </div>

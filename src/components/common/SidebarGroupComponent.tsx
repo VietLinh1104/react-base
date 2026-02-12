@@ -27,7 +27,7 @@ export default function SidebarGroupComponent({ label, items }: SidebarGroupComp
                         {items.map((item, index) => (
                             <SidebarMenuItem key={index}>
                                 <SidebarMenuButton asChild>
-                                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                                    <a href={item.href} target="_self" rel="noopener noreferrer">
                                         {item.icon}
                                         <span>{item.label}</span>
                                     </a>
