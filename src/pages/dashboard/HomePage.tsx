@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { success, error, info, warning } = useToastApp();
+  const { success } = useToastApp();
 
   const handleGenerate = () => {
     setIsLoading(true);
