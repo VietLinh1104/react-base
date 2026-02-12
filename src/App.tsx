@@ -9,15 +9,15 @@ import { ThemeProvider } from "@components/provider/ThemeProvider";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-    <Routes>
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<HomePage />} /> 
-      </Route>
+      <Routes>
+        <Route path="/" element={<DashboardLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
 
-      <Route path="/auth" element={<AuthLayout />}>
-        <Route index element={<AuthPage />} />
-      </Route>
-    </Routes>
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route index element={<AuthPage />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }
