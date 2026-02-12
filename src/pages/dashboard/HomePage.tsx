@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
     setTimeout(() => {
       setIsLoading(false);
       success("Document generated successfully!");
-    }, 0);
+    }, 100);
   };
 
   return (

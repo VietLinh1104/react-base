@@ -84,6 +84,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                             description={t.description}
                             variant={t.variant}
                             type={t.type}
+                            onClose={() => dismiss(t.id)}
                         />
                     </div>
                 ))}
