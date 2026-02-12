@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ddlApi } from '@/api';
 
-// import { DDLResponse  } from "@/api/generated/api";
+import type { DDLResponse  } from "@/api/generated/api";
 
 function App() {
-  useEffect(() => {
-    const fetchDDL = async () => {
+  const [ddlData, setDdlData] = useState<DDLResponse | null>(null);
+
+  const fetchDDL = async () => {
       try {
         const response:any = await ddlApi.getDDLTransactionDetail();
-        if (response?.data) {
+        if (response) {
           console.log('DDL Response:', response);
+          setDdlData(response);
         } else {
           console.log('DDL Response:', response);
         }
@@ -18,13 +20,19 @@ function App() {
       }
     };
 
+
+  useEffect(() => {
     fetchDDL();
   }, []);
 
   return (
     <>
       <p className="text-5xl text-amber-800">
-        Click on the Vite and React logos to learn more
+        {ddlData && ddlData.costCenterDDL && ddlData.costCenterDDL.length > 0 ? <>
+          { ddlData.costCenterDDL.map((item:any) => (
+            <p key={item.id}>{item.name}</p>
+          ))}
+        </>: 'No DDL Data'}
       </p>
     </>
   )
