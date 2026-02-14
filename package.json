@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "start": "vite preview",
     "gen:api": "dotenv -e .env -- openapi-generator-cli generate -i %VITE_API_DOCS_URL% -g typescript-axios -o src/api/generated",
     "preview": "vite preview"
   },

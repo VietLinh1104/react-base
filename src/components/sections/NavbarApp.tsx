@@ -29,6 +29,7 @@ export function NavbarApp({ children }: { children: React.ReactNode }) {
                     icon={<Search />}
                     loadingText="Searching..."
                     placeholder="Search..."
+                    className="h-7"
                 >
                     12 results
                 </InputSpin>

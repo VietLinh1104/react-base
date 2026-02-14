@@ -12,8 +12,8 @@ export interface InputSpinProps {
 
 export function InputSpin({ isLoading = false, icon, children, className, loadingText, placeholder }: InputSpinProps) {
     return (
-        <InputGroup className="max-w-xs h-7" >
-            <InputGroupInput placeholder={placeholder} className={className} disabled={isLoading} />
+        <InputGroup className={`max-w-xs ${className}`} >
+            <InputGroupInput placeholder={placeholder} disabled={isLoading} />
             <InputGroupAddon>
                 {isLoading ? <Spinner data-icon="inline-start" /> : icon}
             </InputGroupAddon>

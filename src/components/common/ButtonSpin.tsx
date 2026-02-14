@@ -13,11 +13,9 @@ export interface ButtonSpinProps {
 
 export function ButtonSpin({ variant, isLoading = false, icon, children, onClick, className, loadingText }: ButtonSpinProps) {
     return (
-        <div className="flex gap-2">
-            <Button variant={variant} disabled={isLoading} onClick={onClick} className={className}>
-                {isLoading ? <Spinner data-icon="inline-start" /> : icon}
-                {isLoading ? loadingText || children : children}
-            </Button>
-        </div>
+        <Button variant={variant} disabled={isLoading} onClick={onClick} className={`${className}`}>
+            {isLoading ? <Spinner data-icon="inline-start" /> : icon}
+            {isLoading ? loadingText || children : children}
+        </Button>
     )
 }
