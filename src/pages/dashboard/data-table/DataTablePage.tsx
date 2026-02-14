@@ -296,7 +296,7 @@ const DataTablePage: React.FC = () => {
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 500);
     }, []);
 
     return (
@@ -304,8 +304,8 @@ const DataTablePage: React.FC = () => {
             <Tabs defaultValue="work" className="w-full">
                 <div className="flex items-center justify-between">
                     <TabsList>
-                        <TabsTrigger value="work">Công việc cần xử lý</TabsTrigger>
-                        <TabsTrigger value="history">Lịch sử xử lý</TabsTrigger>
+                        <TabsTrigger value="work">Work</TabsTrigger>
+                        <TabsTrigger value="history">History</TabsTrigger>
                     </TabsList>
                     <Button>Create Transaction</Button>
                 </div>

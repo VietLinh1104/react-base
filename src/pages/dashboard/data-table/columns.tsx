@@ -1,6 +1,8 @@
-import { formatDateTime } from "@/lib/utils"
+import { formatDate } from "@/lib/utils"
 import type { ColumnDef } from "@tanstack/react-table"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Badge } from "@/components/ui/badge"
+import { UserRoundPen, MoveUpRight, MoveDownLeft, IterationCw } from "lucide-react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -21,6 +23,7 @@ export type Transaction = {
     email?: string
     amount?: number
 }
+
 
 export const columns: ColumnDef<Transaction>[] = [
     {
@@ -45,41 +48,111 @@ export const columns: ColumnDef<Transaction>[] = [
         enableSorting: false,
         enableHiding: false,
     },
-
     {
         accessorKey: "processId",
         header: "Process ID",
+        cell: ({ row }) => {
+            const processId = row.getValue("processId") as number
+            return (
+                <p className="font-light opacity-70">
+                    {processId}
+                </p>
+            )
+        }
     },
     {
         accessorKey: "processStatus",
         header: "Process Status",
+        cell: ({ row }) => {
+            const status = row.getValue("processStatus") as string
+            const statusSuffix = status.split("_")[1]
+            const variant =
+                statusSuffix === "CREATED"
+                    ? "default"
+                    : statusSuffix === "APPROVED"
+                        ? "secondary"
+                        : statusSuffix === "ACCEPTED"
+                            ? "secondary"
+                            : statusSuffix === "REJECTED"
+                                ? "destructive"
+                                : "default"
+            return (
+                <Badge variant={variant}>
+                    {status}
+                </Badge>
+            )
+        },
     },
     {
         accessorKey: "createdBy",
         header: "Created By",
+        cell: ({ row }) => {
+            const createdBy = row.getValue("createdBy") as string
+            return (
+                <Badge variant="secondary">
+                    <UserRoundPen />
+                    {createdBy}
+                </Badge>
+            )
+        }
     },
     {
         accessorKey: "referenceNo",
         header: "Reference No",
+        cell: ({ row }) => {
+            const referenceNo = row.getValue("referenceNo") as string
+            return (
+                <p className="font-light opacity-70">
+                    {referenceNo}
+                </p>
+            )
+        }
     },
     {
         accessorKey: "documentNo",
         header: "Document No",
+        cell: ({ row }) => {
+            const documentNo = row.getValue("documentNo") as string
+            return (
+                <p className="font-light opacity-70">
+                    {documentNo}
+                </p>
+            )
+        }
     },
     {
         accessorKey: "transactionType",
         header: "Transaction Type",
+        cell: ({ row }) => {
+            const transactionType = row.getValue("transactionType") as string
+            const variant =
+                transactionType === "EXP"
+                    ? <MoveUpRight />
+                    : transactionType === "INC"
+                        ? <MoveDownLeft />
+                        : transactionType === "TRF"
+                            ? <IterationCw />
+                            : "default"
+            return (
+                <Badge variant="secondary">
+                    {variant}
+                    {transactionType}
+                </Badge>
+            )
+        }
     },
     {
         accessorKey: "createdAt",
         header: "Created At",
-        cell: ({ row }) => formatDateTime(row.getValue("createdAt")),
-
+        cell: ({ row }) => <Badge variant="secondary">
+            {formatDate(row.getValue("createdAt"))}
+        </Badge>,
     },
     {
         accessorKey: "updatedAt",
         header: "Updated At",
-        cell: ({ row }) => formatDateTime(row.getValue("updatedAt")),
-
+        cell: ({ row }) => <Badge variant="secondary">
+            {formatDate(row.getValue("updatedAt"))}
+        </Badge>,
     },
 ]
