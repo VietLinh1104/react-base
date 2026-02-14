@@ -41,7 +41,7 @@ export function DataTableSkeleton({
                 </TableHeader>
                 <TableBody>
                     {Array.from({ length: rowCount }).map((_, i) => (
-                        <TableRow key={i} className="h-[37px]">
+                        <TableRow key={i} className="h-[40px]">
                             {columns.map((column, j) => (
                                 <TableCell key={j}>
                                     {column.id === "select" ? (
