@@ -1,4 +1,5 @@
 // @pages/dashboard/HomePage.tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ButtonSpin } from "@components/common/ButtonSpin";
 import { useToastApp } from "@hooks/use-toast-app";
 import { useState } from "react";
@@ -17,18 +18,29 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <ButtonSpin
-        variant="secondary"
-        isLoading={isLoading}
-        loadingText="Generating..."
-        onClick={handleGenerate}
-        className="mt-4"
-      >
-        Generate DOC
-      </ButtonSpin>
-      <ButtonSpin variant="outline" onClick={() => setIsLoading(!isLoading)} className="mt-4">
-        Download DOC
-      </ButtonSpin>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+          <ButtonSpin
+            variant="default"
+            isLoading={isLoading}
+            loadingText="Generating..."
+            onClick={handleGenerate}
+            className="mt-4"
+          >
+            Generate DOC
+          </ButtonSpin>
+          <ButtonSpin variant="outline" onClick={() => setIsLoading(!isLoading)} className="mt-4">
+            Download DOC
+          </ButtonSpin>
+        </TabsContent>
+        <TabsContent value="password">Change your password here. Click save when you&apos;re done.</TabsContent>
+      </Tabs>
+
+
     </>
   );
 };

@@ -6,6 +6,7 @@ import AuthLayout from "./components/layout/dashboard/AuthLayout";
 import AuthPage from "./pages/dashboard/AuthPage";
 import { ThemeProvider } from "@components/provider/ThemeProvider";
 import { ToastProvider } from "@components/provider/ToastProvider";
+import DataTablePage from "@pages/dashboard/data-table/DataTablePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DashboardLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="data-table" element={<DataTablePage />} />
           </Route>
 
           <Route path="/login" element={<AuthLayout />}>

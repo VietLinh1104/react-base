@@ -21,7 +21,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ title }) => {
             <SidebarTrigger />
             <h1 className="text-sm font-semibold">{title}</h1>
           </NavbarApp>
-          <main className="w-full p-4">
+          <main className="w-full p-10">
             <Outlet />
           </main>
         </div>
